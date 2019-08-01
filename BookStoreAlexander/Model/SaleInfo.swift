@@ -8,14 +8,15 @@
 
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
-class SaleInfo: ValueObject {
-    var country: String?
-    var saleability: String?
-    var isEbook: Bool?
-    var listPrice: Price?
-    var retailPrice: Price?
-    var buyLink: String?
+class SaleInfo: Object {
+     @objc dynamic var country: String?
+     @objc dynamic var saleability: String?
+     @objc dynamic var isEbook = false
+     @objc dynamic var listPrice: Price?
+     @objc dynamic var retailPrice: Price?
+     @objc dynamic var buyLink: String?
     
     convenience init(_ dict: JSON){
         self.init()

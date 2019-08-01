@@ -8,10 +8,11 @@
 
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
-class PanelizationSummary: ValueObject {
-    var containsEpubBubbles: Bool?
-    var containsImageBubbles: Bool?
+class PanelizationSummary: Object {
+     @objc dynamic var containsEpubBubbles = false
+     @objc dynamic var containsImageBubbles = false
    
     convenience init(_ dict: JSON){
         self.init()

@@ -8,10 +8,11 @@
 
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
-class ReadingMode: ValueObject {
-    var image: Bool?
-    var text: Bool?
+class ReadingMode: Object {
+     @objc dynamic var image = false
+     @objc dynamic var  text = false
     
     convenience init(_ dict: JSON){
         self.init()

@@ -9,7 +9,8 @@ target 'BookStoreAlexander' do
   pod 'RealmSwift'
   pod 'AFNetworking'
   pod 'SwiftyJSON'
-  pod ‘Alamofire’
+  pod 'Alamofire'
+  pod 'SwiftFontIcons', :git => 'https://github.com/daaavid/SwiftFontIcons.git', :branch => 'master'
    
   # Pods for BookStoreAlexander
 

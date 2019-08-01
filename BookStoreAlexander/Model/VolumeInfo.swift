@@ -8,30 +8,31 @@
 
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
-class VolumeInfo: ValueObject {    
-    var title: String?
-    var subtitle: String?
-    var authors = Array<String>()
-    var publisher: String?
-    var publishedDate: String?
-    var desc: String?
-    var industryIdentifiers: [IndustryIdentifer]?
-    var pageCount: Int?
-    var printType: String?
-    var categories = Array<String>()
-    var averageRating: Double?
-    var ratingsCount: Int?
-    var allowAnonLogging: Bool?
-    var contentVersion: String?
-    var imageLinks: ImageLinks?
-    var panelizationSummary :  PanelizationSummary?
-    var readingModes :  ReadingMode?
-    var language: String?
-    var previewLink: String?
-    var infoLink: String?
-    var canonicalVolumeLink: String?
-    var maturityRating: String?
+class VolumeInfo: Object {
+     @objc dynamic var title: String?
+     @objc dynamic var subtitle: String?
+     var authors = List<String>()
+     @objc dynamic var publisher: String?
+     @objc dynamic var publishedDate: String?
+     @objc dynamic var desc: String?
+     var industryIdentifiers: [IndustryIdentifer]?
+     @objc dynamic var pageCount = 0
+     @objc dynamic var printType: String?
+     var categories = List<String>()
+     @objc dynamic var averageRating = 0.0
+     @objc dynamic var ratingsCount = 0
+     @objc dynamic var allowAnonLogging = false
+     @objc dynamic var contentVersion: String?
+     @objc dynamic var imageLinks: ImageLinks?
+     @objc dynamic var panelizationSummary :  PanelizationSummary?
+     @objc dynamic var readingModes :  ReadingMode?
+     @objc dynamic var language: String?
+     @objc dynamic var previewLink: String?
+     @objc dynamic var infoLink: String?
+     @objc dynamic var canonicalVolumeLink: String?
+     @objc dynamic var maturityRating: String?
     
     convenience init(_ dict: JSON){
         self.init()
@@ -59,8 +60,7 @@ class VolumeInfo: ValueObject {
             let ident = IndustryIdentifer(subJson)
             self.industryIdentifiers?.append(ident)
         }
-        
-       
+
         for (_, subJson) : (String, JSON) in dict["categories"] {
             self.categories.append(subJson.stringValue)
         }

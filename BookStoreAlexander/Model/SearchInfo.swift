@@ -8,9 +8,10 @@
 
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
-class SearchInfo: ValueObject {
-    var textSnippet: String?
+class SearchInfo: Object {
+    @objc dynamic var textSnippet: String?
     
     convenience init(_ dict: JSON){
         self.init()

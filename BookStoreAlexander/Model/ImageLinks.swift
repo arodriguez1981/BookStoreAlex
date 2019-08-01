@@ -8,9 +8,11 @@
 
 import Foundation
 import SwiftyJSON
-class ImageLinks: ValueObject {
-    var smallThumbnail: String?
-    var thumbnail: String?
+import RealmSwift
+
+class ImageLinks: Object {
+     @objc dynamic var smallThumbnail: String?
+     @objc dynamic var thumbnail: String?
     
     convenience init(_ dict: JSON){
         self.init()

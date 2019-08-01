@@ -8,18 +8,19 @@
 
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
-class AccessInfo: ValueObject {
-    var country: String?
-    var viewability: String?
-    var embeddable: Bool?
-    var quoteSharingAllowed: Bool?
-    var publicDomain: Bool?
-    var textToSpeechPermission: String?
-    var epub: Details?
-    var pdf: Details?
-    var webReaderLink: String?
-    var accessViewStatus: String?
+class AccessInfo: Object {
+     @objc dynamic var country: String?
+     @objc dynamic var viewability: String?
+     @objc dynamic var embeddable = false
+     @objc dynamic var quoteSharingAllowed = false
+     @objc dynamic var publicDomain = false
+     @objc dynamic var textToSpeechPermission: String?
+     @objc dynamic var epub: Details?
+     @objc dynamic var pdf: Details?
+     @objc dynamic var webReaderLink: String?
+     @objc dynamic var accessViewStatus: String?
     
     convenience init(_ dict: JSON){
         self.init()

@@ -8,16 +8,16 @@
 
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
-class IndustryIdentifer: ValueObject {
-    var type: String?
-    var identifier: String?
+class IndustryIdentifer: Object {
+     @objc dynamic var type: String?
+     @objc dynamic var identifier: String?
     
     convenience init(_ dict: JSON){
         self.init()
         self.type = dict["type"].stringValue
-        self.identifier = dict["identifier"].stringValue
-    
+        self.identifier = dict["identifier"].stringValue    
     }
 }
 

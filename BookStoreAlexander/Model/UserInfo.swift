@@ -8,22 +8,20 @@
 
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
-class UserInfo: ValueObject {
-    var isPurchased: Bool?
-    var isPreorderd: Bool?
-    var updated: Date?
+class UserInfo: Object {
+     @objc dynamic var isPurchased = false
+     @objc dynamic var isPreorderd = false
     
     convenience init(_ dict: JSON){
         self.init()
         self.isPurchased = dict["isPurchased"].boolValue
         self.isPreorderd = dict["isPreorderd"].boolValue
-        self.updated = dict["update"] as? Date
     }
 }
 
 func ==(lhs: UserInfo, rhs: UserInfo) -> Bool {
     return lhs.isPurchased == rhs.isPurchased
         && lhs.isPreorderd == rhs.isPreorderd
-        && lhs.updated == rhs.updated
 }

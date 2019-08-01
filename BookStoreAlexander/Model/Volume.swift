@@ -8,25 +8,26 @@
 
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
-class Volume: Entity {
-    var kind: BooksKind = BooksKind.volume
-    var id: Id<Volume>?
-    var etag: String?
-    var selfLink: String?
-    var volumeInfo: VolumeInfo?
-    var userInfo: UserInfo?
-    var saleInfo: SaleInfo?
-    var accessInfo: AccessInfo?
-    var searchInfo: SearchInfo?
+var realm: Realm!
+
+class Volume: Object{
+    @objc dynamic var kind: String?
+    @objc dynamic var id: String?
+    @objc dynamic var fav = 0
+    @objc dynamic var etag: String?
+    @objc dynamic var selfLink: String?
+    @objc dynamic var volumeInfo: VolumeInfo?
+    @objc dynamic var userInfo: UserInfo?
+    @objc dynamic var saleInfo: SaleInfo?
+    @objc dynamic var accessInfo: AccessInfo?
+    @objc dynamic var searchInfo: SearchInfo?
     
     convenience init(_ dict: JSON){
         self.init()
-        guard
-            let kind : String = dict["kind"].stringValue,
-            kind == BooksKind.volume.description
-            else{ return }
-        self.id = Id(dict["id"].stringValue)
+        self.kind = dict["kind"].stringValue
+        self.id = dict["id"].stringValue
         self.etag = dict["etag"].stringValue
         self.selfLink = dict["selfLink"].stringValue
         self.volumeInfo = VolumeInfo(dict["volumeInfo"])
@@ -34,7 +35,10 @@ class Volume: Entity {
         self.saleInfo = SaleInfo(dict["saleInfo"])
         self.accessInfo = AccessInfo(dict["accessInfo"])
         self.searchInfo = SearchInfo(dict["searchInfo"])
-        
+    }
+    
+    override class func primaryKey() -> String? {
+        return "id"
     }
 }
 
@@ -49,3 +53,5 @@ func ==(lhs: Volume, rhs: Volume) -> Bool {
         && lhs.accessInfo == rhs.accessInfo
         && lhs.searchInfo == rhs.searchInfo
 }
+
+

@@ -20,12 +20,14 @@ PODS:
   - Realm/Headers (3.17.1)
   - RealmSwift (3.17.1):
     - Realm (= 3.17.1)
+  - SwiftFontIcons (1.0.1)
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - AFNetworking
   - Alamofire
   - RealmSwift
+  - SwiftFontIcons (from `https://github.com/daaavid/SwiftFontIcons.git`, branch `master`)
   - SwiftyJSON
 
 SPEC REPOS:
@@ -36,13 +38,24 @@ SPEC REPOS:
     - RealmSwift
     - SwiftyJSON
 
+EXTERNAL SOURCES:
+  SwiftFontIcons:
+    :branch: master
+    :git: https://github.com/daaavid/SwiftFontIcons.git
+
+CHECKOUT OPTIONS:
+  SwiftFontIcons:
+    :commit: 7d51d27cfcd4741fbbf30dcb3a3048d13fef9da7
+    :git: https://github.com/daaavid/SwiftFontIcons.git
+
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Realm: c204f1a890f07dea43b14132a6aad118c054b8f2
   RealmSwift: 4d3c9233544b9cd08a8913e0872b9038eb99b054
+  SwiftFontIcons: 706af02058409838390ebef81a74569b81eb5c09
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: ae41c4b933471c6dc7d729fd0329799f92b615ab
+PODFILE CHECKSUM: 8967adf3174173eb5364ff3bfdcdf09290ee9568
 
 COCOAPODS: 1.7.4

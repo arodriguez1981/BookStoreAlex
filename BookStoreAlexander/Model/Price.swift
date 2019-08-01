@@ -8,10 +8,11 @@
 
 import Foundation
 import SwiftyJSON
+import RealmSwift
 
-class Price {
-    var amount = 0.0
-    var currencyCode = ""
+class Price: Object {
+    @objc dynamic var amount = 0.0
+    @objc dynamic var currencyCode = ""
     
     convenience init(_ dict: JSON){
         self.init()

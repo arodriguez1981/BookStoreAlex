@@ -7,14 +7,21 @@
 //
 
 import Foundation
-public struct Details: ValueObject {
-    public let isAvailable: Bool
-//    public let downloadLink: URL
-    public let acsTokenLink: URL
+import RealmSwift
+import SwiftyJSON
+
+class Details: Object {
+   @objc dynamic var  isAvailable = false
+    @objc dynamic var  acsTokenLink: String?
+    
+    convenience init(_ dict: JSON){
+        self.init()
+        self.isAvailable = dict["isAvailable"].boolValue
+        self.acsTokenLink = dict["acsTokenLink"].stringValue
+    }
 }
 
-public func ==(lhs: Details, rhs: Details) -> Bool {
+func ==(lhs: Details, rhs: Details) -> Bool {
     return lhs.isAvailable == rhs.isAvailable
-//        && lhs.downloadLink == rhs.downloadLink
         && lhs.acsTokenLink == rhs.acsTokenLink
 }

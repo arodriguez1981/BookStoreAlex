@@ -21,8 +21,7 @@ typealias ENCODING_COMPLETED = (_ encodingResult: SessionManager.MultipartFormDa
 let tipoDispositivo = 1 // es el numero de iOS
 
 class NetConnection: NSObject {
-    
-    
+
     fileprivate static var staticManager: SessionManager?
     static var manager: SessionManager {
         if staticManager != nil {
@@ -38,7 +37,13 @@ class NetConnection: NSObject {
     
     class func getiOSDevelopmentBooks( _ maxResults: Int, startIndex: Int, response: ResponseHandler) {
         response.startHandler?()
-        manager.request(WS_Books + "volumes?q=ios+development&maxResults="+"\(maxResults)"+"&startIndex="+"\(startIndex)"+"&key="+API_Key, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil)
+        manager.request(WS_Books + "volumes?q=ios+development&maxResults=" + "\(maxResults)" + "&startIndex=" + "\(startIndex)" + "&key="+API_Key, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil)
+            .responseJSON(completionHandler: response.responseHandler)
+    }
+    
+    class func getBookDetails(_ bookId: String, response: ResponseHandler) {
+        response.startHandler?()
+        manager.request(WS_Books + "volumes/" + bookId, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil)
             .responseJSON(completionHandler: response.responseHandler)
     }
 }
